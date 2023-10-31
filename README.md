@@ -29,16 +29,16 @@ input capture.
 
 ## Outputs
 
-Tiny has two output ports with a total of 13 buffered ports.
-Each output port is suitable for inductive loads (eg relay,
+Tiny has two output ports with a total of 13 buffered outputs.
+Each output is suitable for inductive loads (eg relay,
 motor, light) and can source up to 500mA. 
 
-Port A provides 5 output ports which can be scheduled to be 
+Port A provides 5 outputs which can be scheduled to be
 set when the internal clock matches a specific 32 bit value.
 
-Port B provides 8 programmable output ports.
+Port B provides 8 programmable outputs.
 
-If port A is manually set, any pending schedule will be
+If Port A is manually set, any pending schedule will be
 cancelled.
 
 ## Protocol
@@ -63,9 +63,9 @@ four data bytes are ignored.
 
 Where:
 
-    - [PB] is the desired state of ports 1-8 on Port B
-    - [PA] is 0x80 ORed with the desired state of Port A
-      or 0x00 to leave Port A unchanged
+   - [PB] is the desired state of ports 1-8 on Port B
+   - [PA] is 0x80 ORed with the desired state of Port A
+     or 0x00 to leave Port A unchanged
 
 #### Schedule PA (0xE0):
 
@@ -85,7 +85,7 @@ due to processing delays in the tiny, CLOCK should be about
 ### Responses
 
 Tiny will echo any valid command back to the host, acknowledging
-the command. In addition several messages are sent un-solicited
+the command. In addition, several messages are sent un-solicited
 by the tiny. In each case below, [CLOCK] is the big-endian 32
 bit clock time of the event being reported.
 
@@ -128,10 +128,10 @@ Where:
 
 ### Frame Alignment
 
-When connecting to the tiny, buffers on the FTDI USB 
-adapter must be aligned so that the 5 byte command and 
-response frames are properly sent and received. The
-safest approach is to repeatedly send a specially 
+When connecting to the tiny, buffers on the FTDI USB
+adapter must be aligned so that the 5 byte command and
+response frames are properly sent and received. A simple
+approach is to repeatedly send a specially
 crafted 6 byte message to the tiny and read to a timeout.
 When the command and reply buffers are aligned, the tiny
 will respond with an acknowledge frame.
