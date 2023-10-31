@@ -63,7 +63,7 @@ four data bytes are ignored.
 
 Where:
 
-   - [PB] is the desired state of ports 1-8 on Port B
+   - [PB] is the desired state of outputs 1-8 on Port B
    - [PA] is 0x80 ORed with the desired state of Port A
      or 0x00 to leave Port A unchanged
 
